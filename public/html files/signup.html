@@ -1,0 +1,104 @@
+<html>
+<head>
+<style type="text/css">
+
+
+form {
+    border: 3px solid #f1f1f1;
+    
+   
+}
+.header{
+	color:#4CAF50;
+	text-align:center;
+	
+}
+.webpage{
+	padding:25px;
+	margin-left:auto;
+	margin-right: auto;
+}
+#con{
+	width:400px;
+	margin:auto;
+}
+input[type=text], input[type=password]{
+	font-size:15px;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    
+}
+label{
+	font-size:25px;
+	color:white;
+}
+.button {
+    background-color: rgb(180,180,180);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.button:hover {
+    opacity: 0.8;
+}
+.container {
+    padding: 16px;
+}
+a{
+	display: flex; justify-content:flex-end;
+     
+}
+.container1{
+	padding:16px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#reg{
+	width:500px;
+	margin:auto;	
+}
+body{
+background-image: url(d.jpg);
+ background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 950px;
+
+background-position: center;
+
+}
+
+</style>
+<title>WELCOME TO SNAKE GAME</title>
+</head>
+<body>
+	
+<div class="webpage">
+	<div class="header">
+			<h1>SIGNUP</h1>
+	</div>
+	<div id="con">
+	<form action="/register" method="post" >
+		
+		<div class="container">
+		
+			<label for="un">NEW USER NAME</label>
+			<input placeholder="Enter the username" id="un" type="text" name="username" class="inbox" required><br>
+			<label for="pw">NEW PASSWORD</label>
+			<input placeholder="Enter the password"  id="pw" type="password" name="pass" class="inbox" required><br>
+			
+			<input type="submit" class="button" value="Create Account">
+	
+		</div>
+	</form>
+	</div>
+</div>
+
+</body>
+</html>

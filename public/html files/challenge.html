@@ -1,0 +1,137 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+  body{
+    background: #FFFFF0;
+  }
+  td{
+    width: 100px;
+    height: 50px;
+  }
+table,th,td {
+  margin-right: auto;
+  margin-left: auto;
+  border : 2px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+}
+th{
+  background-color: black;
+  color: white;
+}
+.notification {
+    position: relative;
+  display: inline-block;
+  }
+
+.notification:hover {
+  opacity: 0.5;
+}
+.button{
+  width: 100px;
+  height: 40px;
+  border-radius: 15px;
+  text-align: center;
+}
+</style>
+<body>
+
+<h1>The Challenge Mode</h1>
+<h2>You can participate in only one challenge at a time. Also, check your notifications everytime.</h2>
+<h4>The Challenge Mode is only available for Snake Game</h4>
+<button style="border-radius: 12px;text-align: center;font-size: 16px;background-color: #663C00;color: white; margin-top: 50px;width: 200px;
+  height: 40px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); 
+  border: none;cursor: pointer;" type="button" onclick="loadDoc()">View Opponents</button>
+<a style="float: right;margin-right: 80px;" href="#" class="notification" onclick="notification()">
+  
+  <i class="fa fa-bell" style="color: red; font-size:72px"></i><br>
+
+</a>
+<div style="background-color: black; display: none; height: 300px;" id="x">
+  
+</div>
+
+
+
+
+<table id="demo"></table>
+
+<script>
+ function abc(event){
+  
+    var xhttp = new XMLHttpRequest();
+    var elem = event.currentTarget;
+    
+    debugger;
+    var arr=elem.value.split(",");
+    var coins=document.getElementById(arr[0]);
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xhttp.open("GET","/challenged?a="+arr[0]+"&b="+coins.value+"&c="+arr[1], true);
+  xhttp.send();
+}
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xhttp.open("GET", "/challenge", true);
+  xhttp.send();
+}
+function myFunction(a) {
+  var i;
+  var data = a.responseText;
+  var table="<tr><th>Name</th><th>Coins</th><th>Challenge Score</tr>";
+  for (i = 0; i<JSON.parse(data).length; i++) { 
+    table += "<tr><td>" +JSON.parse(data)[i].name +"</td><td>" +JSON.parse(data)[i].pcoins +"</td><td>"+JSON.parse(data)[i].score+"</td><td><input style='width:80px; height:30px;' type='text' id='"+JSON.parse(data)[i].name+"' placeholder='enter bet' required></td><td><button class='button'  onclick='abc(event);' value='"+JSON.parse(data)[i].name+","+JSON.parse(data)[i].score+"'>Challenge</button></td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+function notification(a){
+  var xhttp = new XMLHttpRequest();
+ xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      confirms(this);
+    }
+  };
+  xhttp.open("GET","/notify", true);
+  xhttp.send();
+}
+function confirms(a){
+  var data= a.responseText;
+  var b=JSON.parse(data)[0].fromuser;
+  var c=JSON.parse(data)[0].coins;
+var r=confirm(b+" wants to challenge you with "+c+" coins");
+if(r==true)
+{
+ var xhttp = new XMLHttpRequest();
+ xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      confirmss(this);
+    }
+  };
+  xhttp.open("GET","/notify1", true);
+  xhttp.send(); 
+}
+}
+function confirmss(){
+  
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Type Racer</title>
+<link rel="stylesheet" type="text/css" href="outlookt.css"></link>
+<link rel="stylesheet" type="text/css" href="outlook.css"></link>
+</head>
+<style type="text/css">
+	h6{
+		display: inline-block;
+	}
+</style>
+<body style="background-color: #475668;">
+
+<header>
+<h1>Type Racer</h1>
+</header>
+<div>
+		<h6>Overall Rating:</h6>
+	<h6 id="a"></h6>
+	<h6><i class="fa fa-star" style="font-size:24px; color: yellow;"></i>/5</h6>
+<p>Type The Given Word Within
+<span id="seconds">5</span> Seconds:</p>
+<h2 id="current-word">Hello</h2>
+<input type="text" placeholder="Start typing.!" id="word-input" autofocus>
+<h4 id="message"></h4>
+<h3>Time Left:
+<span id="time">0</span>
+</h3>
+<h3>Score:
+<span id="score">0</span>
+</h3>
+<input type="button" class="sub" onclick="abc()" value="click to start">
+<h5>Instructions</h5>
+<p>Type each word in the given amount of seconds to score. To play again, reload the page. Your score will reset.</p>
+<form action='/leadt'>
+	<input style="margin-right: 53%;" type="submit" class="button" name="action">
+</form>
+<script src="main.js"></script>
+</div>
+<script type="text/javascript">
+	var g=window.location.href;
+		var c=g.split("=");
+		document.getElementById("a").innerHTML=c[1];
+</script>
+</body>
+</html>

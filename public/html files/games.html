@@ -1,0 +1,200 @@
+<html>
+<head>
+<title>Games</title>
+<style>
+body {
+  background-image:url("gamebg.jpg");
+}
+
+.left {
+ float: left;
+ width: 20%;
+ min-height: 1500px;
+ max-height: 10000px;
+  background-color: #000;
+  
+}
+.left h2 {
+  color: white;
+  padding-left: 8px;
+}
+.right{
+  display: inline-block;
+  margin: 50px;
+  
+  }
+#mySearch {
+  font-size: 18px;
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #ddd;
+}
+#myMenu {
+  background-color:#000;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#myMenu li a {
+  padding: 12px;
+  text-decoration: none;
+  color: white;
+  display: block
+}
+#myMenu li a:hover {
+  background-color: #C0C0C0;
+}
+@keyframes example {
+  0%   { left:0px; top:0px;}
+  15%  { left:350px; top:0px;}
+  30%  { left:350px; top:600px;}
+  45%  { left:0px; top:0px;}
+  60%  { left:0px; top:600px;}      
+  75%  { left:350px; top:0px;}
+  100% { left:0px; top:0px;}
+}
+</style>
+</head>
+<body>
+	<script>
+function myFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("mySearch");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myMenu");
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+</script>
+	<div>
+  <div class="left" >
+    <h2>Menu</h2>
+    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+    <ul id="myMenu" style="width: 200px; font-size: 20px;text-align: center; display: block; margin-left: auto; margin-right: auto;">
+      <li><a href="/snake.html" id="game3">SNAKE GAME</a></li>
+      <li><a href="/typeracer.html" id="game4">TYPE RACER</a></li>
+      <li><a href="#">GAME0</a></li>
+      <li><a href="#">GAME1</a></li>
+      <li><a href="#">GAME2</a></li>
+      <li><a href="#">GAME3</a></li>
+      <li><a href="#">GAME4</a></li>
+      <li><a href="#">GAME5</a></li>
+      <li><a href="#">GAME6</a></li>
+    </ul>
+  </div>
+<div>
+<form action="/leaderboard3" method="get" style="float: right;">
+  <input type="submit"  style="border-radius: 12px;text-align: center;font-size: 16px;background-color: rgb(255,255,255);color: black; margin-top: 50px; margin-right: 120px;width: 200px;
+  height: 40px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); 
+  border: none;cursor: pointer;" value="Site LeaderBoard">
+</form>
+</div>
+<div>
+  <a href='/challenges'>
+  <input type="submit"  style="border-radius: 12px;text-align: center;font-size: 16px;background-color: rgb(255,255,255);color: black; margin-top: 50px; margin-right: 120px;width: 200px;
+  height: 40px; float: right;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); 
+  border: none;cursor: pointer;" value="challenge Mode">
+</form>
+</div>
+<div>
+  <a href='/coins'>
+  <input type="submit"  style="border-radius: 12px;text-align: center;font-size: 16px;background-color: rgb(255,255,255);color: black; margin-top: 50px; margin-right: 120px;width: 200px;
+  height: 40px; float: right;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); 
+  border: none;cursor: pointer;" value="Need Coins?">
+</form>
+</div>
+
+
+
+
+<div class="right">
+	<div>
+<a style="margin-left: 200px;" href='/snake' onclick="aab()" id="snake" method="post">
+	<img style="margin-top:50px; width: 600px;height: 400px;" src="snakegame1.jpg" id="game1" alt="Snake Game">
+</a>
+<div>
+<a style="margin-left: 200px;" href='/typeracer' onclick="aac()" method="post">
+	<img style="margin-top:40px;width: 600px;height: 400px;"src="typeracer.jpg" id="game2" alt="TypeRacer"></a>
+	
+</div>
+</div>
+</body>
+<script type="text/javascript">
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      modify(this);
+    }
+  };
+  xhttp.open("GET", "/ask", true);
+  xhttp.send();
+  function modify(a){
+    var data=a.responseText;
+    var b=JSON.parse(data)[0].subs;
+    if(b==1){
+      document.getElementById("game2").style.display = "none";
+        document.getElementById("game4").style.display = "none";
+    }
+    if(b==2){
+      document.getElementById("game1").style.display = "none";
+        document.getElementById("game3").style.display = "none";
+    }
+  }
+  /*var xhr=window.location.href;
+    var s=xhr.split("?");
+    var d=s[1].split("&");
+    debugger;
+    if(d.length===1)
+    {
+      var m=d[0].split("=");
+      if(m[1]==="1"){
+        document.getElementById("game2").style.display = "none";
+        document.getElementById("game4").style.display = "none";
+      }
+      else{
+        document.getElementById("game1").style.display = "none";
+        document.getElementById("game3").style.display = "none";
+      }
+    }*/
+  function aab(){
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myfunction(this);
+    }
+  };
+  xhttp.open("GET", "/sgamerating", true);
+  xhttp.send();
+  }
+  function myfunction(a){
+    var data= a.responseText;
+      var b=JSON.parse(data)[0].avg;
+      location.replace("snake.html?a="+b);
+  }
+  function aac(){
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myfunctionn(this);
+    }
+  };
+  xhttp.open("GET", "/tgamerating", true);
+  xhttp.send();
+  }
+  function myfunctionn(a){
+    var data= a.responseText;
+      var b=JSON.parse(data)[0].avg;
+      location.replace("typeracer.html?a="+b);
+  }
+</script>
+</html>

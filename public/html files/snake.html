@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>SNAKE GAME</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+	h2{
+		color: white;
+		display: inline-block;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="outlook.css"></link>
+</head>
+<body background="f.jpg">
+<div>
+<canvas id="canvas" height=400px></canvas>
+<div style="float: right; margin-top: -525px; margin-right: 25px;">
+	<h2>Overall Rating:</h2>
+	<h2 id="a"></h2>
+	<h2><i class="fa fa-star" style="font-size:24px; color: yellow;"></i>/5</h2>
+</div>
+</div>
+<form  action='/lead'>
+	<input type="submit" class="button" name="action"></form>
+<script src="setting.js"></script>
+</form>
+<script type="text/javascript">
+	var g=window.location.href;
+	var c=g.split("=");
+	document.getElementById("a").innerHTML=c[1]; 
+</script>
+</body>
+</html>

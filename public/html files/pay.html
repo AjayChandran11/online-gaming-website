@@ -1,0 +1,96 @@
+<html>
+<head>
+	<title>PAYMENT</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		body{
+			background-color: #2F4F4F;
+		}
+		h1{
+			text-align: center;
+			background-color: #D3D3D3;
+			align-content: center;
+			height: 100px;
+
+		}
+		.hello{
+			width: 70%;
+			float: left;
+		}
+		label{
+			font-size: 40px;
+		}
+		input[type="text"]{
+			width: 70%;
+			height: 45px;
+		}
+		.win{
+			margin: 70px;
+		}
+		input[type="submit"]{
+			align-content: center;
+			background-color: rgb(180,180,180);
+    		color: black;
+    		font-size: 19px;
+    		padding: 14px 20px;
+    		margin: 8px 0;
+    		border: none;
+    		cursor: pointer;
+    		width: 20%;
+    		margin-left: 50%;
+		}
+		h2{
+			margin-left: 50px;
+			font-size: 80px;
+			color:#FFD700;
+			font-family: arial;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		h3{
+			margin-left: 50px;
+			font-size: 60px;
+			color:#FFD700;
+			font-family: arial;
+			margin-top: 0;
+		}
+	</style>
+</head>
+<body>
+	<h1>ONLINE PAYMENT</h1> 
+	<div class="hello">		
+		
+		<div class="win">
+		<label>CARD NUMBER</label><br>
+		<input type="text" name="card number" placeholder="Enter the card number" required><br>
+		</div>
+		<div class="win">
+		<label>CARD HOLDER NAME</label><br>
+		<input type="text" name="card holder" placeholder="Enter the name" required><br>
+		</div>
+		<div class="win">
+		<label>CVC</label><br>
+		<input style="width: 25%;" type="text" name="cvc" placeholder="Enter" required><br>
+	    </div> 
+		<div class="win">
+		<label>EXPIRY DATE</label><br>
+		<input type="text" name="expiry date" placeholder="Enter expiry date" required><br>
+		</div>
+		<input type="submit" value="Pay" class="some">
+	</div>
+	<div style="float: right; width: 30%; margin-top: 100px;">
+		<i class="fa fa-credit-card" style="font-size:350px;color:#FFD700;"></i>
+		<h2 id="d"></h2>
+		<h3 id="c"></h3>
+	</div>
+</body>
+<script type="text/javascript">
+		var xhr=window.location.href;
+		var s=xhr.split("?");
+		var g=s[1].split("=");
+		var h=g[1].split("&");
+		document.getElementById("d").innerHTML=h[0];
+		document.getElementById("c").innerHTML=g[2];
+	</script>
+</html>
